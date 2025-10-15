@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Магазин морских свинок</title>
+    <link rel="stylesheet" href="style/styles.css">
+    <script src="../script/script.js"></script>
+</head>
+<body>
+    <div class="page">
+        <!-- Шапка -->
+        <header class="header">
+            <h1 class="header__title">Магазин морских свинок</h1>
+        </header>
+        <header class="header">
+    <div class="header__container">
+        <h1 class="header__title">Магазин морских свинок</h1>
+        <button class="theme-toggle" id="themeToggle" aria-label="Переключить тему">
+            <span class="theme-toggle__icon">🌙</span>
+        </button>
+    </div>
+</header>
+
+        <!-- Навигация -->
+        <nav class="nav">
+            <ul class="nav__list">
+                <li class="nav__item nav__item--active">
+                    <a class="nav__link" href="index.html">Главная</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link" href="pages/news.html">Новости</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link" href="pages/practices.html">Практики</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link" href="pages/goods.html">Товары</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link" href="pages/contacts.html">Контакты</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Основной контент -->
+        <main class="main">
+            <!-- Профиль -->
+            <section class="profile">
+                <article class="profile__card">
+                    <h1 class="profile__title">Информация об авторе</h1>
+                    <img class="profile__photo" src="images/photo.jpg" alt="Фото автора">
+                    <h2 class="profile__name">Петушкова Дарья</h2>
+                    <p class="profile__group">ЭФБО-04-24</p>
+                </article>
+            </section>
+            
+            <!-- Обо мне -->
+            <section class="about">
+                <h2 class="about__title">Обо мне</h2>
+                <div class="about__content">
+                    <p class="about__text">Еще только начинаю свой путь самурая...</p>
+                </div>
+            </section>
+            
+            <!-- Навыки -->
+            <section class="skills">
+                <h2 class="skills__title">Мои навыки</h2>
+                <div class="skills__grid">
+                    <div class="skill">
+                        <span class="skill__icon">💻</span>
+                        <span class="skill__name">HTML5 & CSS3</span>
+                    </div>
+                    <div class="skill">
+                        <span class="skill__icon">⚡</span>
+                        <span class="skill__name">JavaScript</span>
+                    </div>
+                    <div class="skill">
+                        <span class="skill__icon">🎨</span>
+                        <span class="skill__name">Веб-дизайн</span>
+                    </div>
+                    <div class="skill">
+                        <span class="skill__icon">🐭</span>
+                        <span class="skill__name">Уход за морскими свинками</span>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Опыт работы -->
+            <section class="experience">
+                <h2 class="experience__title">Мой опыт работы</h2>
+                <div class="experience__grid">
+                    <article class="experience-card">
+                        <h3 class="experience-card__title">Опыт 1</h3>
+                        <p class="experience-card__description">Работала уборщицей клеток морских свинок. Долго.</p>
+                    </article>
+                    <article class="experience-card">
+                        <h3 class="experience-card__title">Опыт 2</h3>
+                        <p class="experience-card__description">Работала кульером сладостей из магазина по просьбе родителей.</p>
+                    </article>
+                    <article class="experience-card">
+                        <h3 class="experience-card__title">Опыт 3</h3>
+                        <p class="experience-card__description">Работала студентом.</p>
+                    </article>
+                </div>
+            </section>
+        </main>
+
+        <!-- Подвал -->
+        <footer class="footer">
+            <p class="footer__text">Магазин защищен ассоциацией свинок!</p>
+        </footer>
+    </div>
+</body>
+</html>

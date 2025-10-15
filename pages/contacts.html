@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты - Магазин морских свинок</title>
+    <link rel="stylesheet" href="../style/styles.css">
+    <script src="../script/script.js"></script>
+</head>
+<body>
+    <div class="page">
+        <!-- Шапка -->
+        <header class="header">
+            <h1 class="header__title">Магазин морских свинок</h1>
+        </header>
+
+        <!-- Навигация -->
+        <nav class="nav">
+            <ul class="nav__list">
+                <li class="nav__item">
+                    <a class="nav__link" href="../index.html">Главная</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link" href="news.html">Новости</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link" href="practices.html">Практики</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link" href="goods.html">Товары</a>
+                </li>
+                <li class="nav__item nav__item--active">
+                    <a class="nav__link" href="contacts.html">Контакты</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Основной контент -->
+        <main class="main">
+            <h1 class="contacts__title">Наши контакты</h1>
+            
+            <div class="contacts__container">
+                <h2 class="contacts__subtitle">Свяжитесь с нами</h2>
+                
+                <div class="contacts__details">
+                    <div class="contact-item">
+                        <span class="contact-item__label">Адрес электронной почты:</span>
+                        <p class="contact-item__value">petushkovad@yandex.ru</p>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <span class="contact-item__label">Адрес:</span>
+                        <p class="contact-item__value">г. Москва, ул. Тверская, д. 9</p>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <span class="contact-item__label">Телефон:</span>
+                        <p class="contact-item__value">+7 (999) 123-45-67</p>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <span class="contact-item__label">Время работы:</span>
+                        <p class="contact-item__value">Пн-Пт: 9:00-18:00<br>Сб-Вс: 10:00-16:00</p>
+                    </div>
+                </div>
+                
+                <button class="contacts__button" onclick="contactModal.showModal()">Связаться с нами</button>
+            </div>
+        </main>
+
+        <!-- Подвал -->
+        <footer class="footer">
+            <p class="footer__text">Магазин защищен ассоциацией свинок!</p>
+        </footer>
+
+        <!-- Модальное окно для формы обратной связи -->
+        <dialog id="contactModal" class="modal">
+            <div class="modal__header">
+                <h2 class="modal__title">Форма обратной связи</h2>
+            </div>
+            
+            <div class="modal__content">
+                <form id="feedbackForm" class="modal-form">
+                    <div class="form-group">
+                        <label class="form-group__label" for="name">
+                            Имя <span class="form-required">*</span>
+                        </label>
+                        <input class="form-group__input" type="text" id="name" name="name" required placeholder="Введите ваше имя">
+                        <div class="form-group__hint">Как к вам обращаться?</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-group__label" for="phone">
+                            Телефон <span class="form-required">*</span>
+                        </label>
+                        <input class="form-group__input" type="tel" id="phone" name="phone" required placeholder="+7 (999) 123-45-67" pattern="[\+\-0-9\s\(\)]{10,}">
+                        <div class="form-group__hint">Для оперативной связи</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-group__label" for="email">
+                            Электронная почта <span class="form-required">*</span>
+                        </label>
+                        <input class="form-group__input" type="email" id="email" name="email" required placeholder="example@mail.ru">
+                        <div class="form-group__hint">Для отправки ответа</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-group__label" for="category">
+                            Категория обращения <span class="form-required">*</span>
+                        </label>
+                        <select class="form-group__select" id="category" name="category" required>
+                            <option value="">Выберите категорию</option>
+                            <option value="consultation">Консультация по морским свинкам</option>
+                            <option value="purchase">Покупка товаров</option>
+                            <option value="delivery">Доставка и оплата</option>
+                            <option value="cooperation">Сотрудничество</option>
+                            <option value="complaint">Жалоба</option>
+                            <option value="suggestion">Предложение</option>
+                            <option value="other">Другое</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-group__label" for="message">
+                            Текст обращения <span class="form-required">*</span>
+                        </label>
+                        <textarea class="form-group__textarea" id="message" name="message" required placeholder="Опишите ваш вопрос или проблему..."></textarea>
+                        <div class="form-group__hint">Максимум 500 символов</div>
+                    </div>
+
+                    <div class="modal__actions">
+                        <button type="button" class="button button--secondary" onclick="closeModal()">Отмена</button>
+                        <button type="button" class="button button--primary" onclick="submitForm()">Отправить сообщение</button>
+                    </div>
+                </form>
+            </div>
+        </dialog>
+
+        <script>
+            // Получаем элементы
+            const contactModal = document.getElementById('contactModal');
+            const feedbackForm = document.getElementById('feedbackForm');
+
+            // Функция для закрытия модального окна
+            function closeModal() {
+                contactModal.close();
+                resetForm();
+            }
+
+            // Функция для отправки формы
+            function submitForm() {
+                const form = document.getElementById('feedbackForm');
+                const formData = new FormData(form);
+                
+                // Валидация формы
+                if (!form.checkValidity()) {
+                    form.reportValidity();
+                    return;
+                }
+
+                // Собираем данные формы
+                const data = {
+                    name: formData.get('name'),
+                    phone: formData.get('phone'),
+                    email: formData.get('email'),
+                    category: formData.get('category'),
+                    message: formData.get('message'),
+                    timestamp: new Date().toISOString()
+                };
+
+                // В реальном приложении здесь был бы AJAX-запрос на сервер
+                console.log('Данные формы обратной связи:', data);
+                
+                // Закрываем модальное окно
+                closeModal();
+                
+                // Показываем сообщение об успехе
+                showSuccessMessage();
+            }
+
+            // Функция показа успешного сообщения
+            function showSuccessMessage() {
+                alert('✅ Спасибо! Ваше сообщение отправлено. Мы свяжемся с вами в ближайшее время.');
+            }
+
+            // Сброс формы при закрытии модального окна
+            function resetForm() {
+                feedbackForm.reset();
+            }
+
+            // Закрытие модального окна по клику на фон
+            contactModal.addEventListener('click', function(event) {
+                if (event.target === this) {
+                    closeModal();
+                }
+            });
+
+            // Обработка клавиши Escape
+            contactModal.addEventListener('cancel', function(event) {
+                event.preventDefault();
+                closeModal();
+            });
+
+            // Ограничение длины текста в textarea
+            document.getElementById('message').addEventListener('input', function(event) {
+                const maxLength = 500;
+                if (this.value.length > maxLength) {
+                    this.value = this.value.substring(0, maxLength);
+                }
+            });
+
+            // Маска для телефона
+            document.getElementById('phone').addEventListener('input', function(event) {
+                let value = this.value.replace(/\D/g, '');
+                if (value.startsWith('7') || value.startsWith('8')) {
+                    value = value.substring(1);
+                }
+                if (value.length > 0) {
+                    value = '+7 (' + value;
+                    if (value.length > 7) {
+                        value = value.substring(0, 7) + ') ' + value.substring(7);
+                    }
+                    if (value.length > 12) {
+                        value = value.substring(0, 12) + '-' + value.substring(12);
+                    }
+                    if (value.length > 15) {
+                        value = value.substring(0, 15) + '-' + value.substring(15);
+                    }
+                }
+                this.value = value;
+            });
+        </script>
+    </div>
+</body>
+</html>
