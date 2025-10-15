@@ -1,18 +1,4 @@
-// Умная функция для определения базового пути
-function getBasePath() {
-    // Если работаем на GitHub Pages
-    if (window.location.hostname.includes('github.io')) {
-        return '/Second_project/';
-    }
-    // Если работаем локально
-    return '/';
-}
 
-// Функция для правильного пути к файлам
-function getAssetPath(path) {
-    const base = getBasePath();
-    return base + path;
-}
 
 // ===== ПЕРЕКЛЮЧАТЕЛЬ ТЕМЫ =====
 class ThemeManager {
