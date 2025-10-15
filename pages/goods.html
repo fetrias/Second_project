@@ -4,107 +4,163 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Товары - Магазин морских свинок</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="../style/styles.css">
-    <script src="../script/script.js"></script>
-    <script src="/Second_project/script/script.js"></script>
 </head>
-<body>
-    <div class="page">
-        <!-- Шапка -->
-        <header class="header">
-            <div class="header__container">
-                <h1 class="header__title">Магазин морских свинок</h1>
-                <div class="header__actions">
-                    <button class="theme-toggle" id="themeToggle" aria-label="Переключить тему">
-                        <span class="theme-toggle__icon">🌙</span>
-                    </button>
+<body class="bg-light">
+    <div class="container-fluid p-0">
+        <header class="bg-primary text-white py-4">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h1 class="h3 mb-1">Магазин морских свинок</h1>
+                        <p class="mb-0 opacity-75">Всё для ваших питомцев</p>
+                    </div>
+                    <div class="col-auto">
+                        <button class="btn btn-light btn-sm" id="themeToggle">
+                            <i class="bi bi-moon"></i>
+                        </button>
+                        <a href="goods_v1.html" class="btn btn-outline-light btn-sm ms-2">
+                            <i class="bi bi-arrow-left-right"></i> Старая версия
+                        </a>
+                    </div>
                 </div>
             </div>
         </header>
 
-        <!-- Навигация -->
-        <nav class="nav">
-            <ul class="nav__list">
-                <li class="nav__item">
-                    <a class="nav__link" href="../index.html">Главная</a>
-                </li>
-                <li class="nav__item">
-                    <a class="nav__link" href="news.html">Новости</a>
-                </li>
-                <li class="nav__item">
-                    <a class="nav__link" href="practices.html">Практики</a>
-                </li>
-                <li class="nav__item nav__item--active">
-                    <a class="nav__link" href="goods.html">Товары</a>
-                </li>
-                <li class="nav__item">
-                    <a class="nav__link" href="contacts.html">Контакты</a>
-                </li>
-            </ul>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="../index.html">
+                                <i class="bi bi-house me-1"></i>Главная
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="news.html">
+                                <i class="bi bi-newspaper me-1"></i>Новости
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="practices.html">
+                                <i class="bi bi-code-slash me-1"></i>Практики
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="goods.html">
+                                <i class="bi bi-cart me-1"></i>Товары
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contacts.html">
+                                <i class="bi bi-telephone me-1"></i>Контакты
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </nav>
 
-        <!-- Основной контент -->
-        <main class="main">
-            <h1 class="products__title">Наши товары</h1>
-            
-            <div class="products__grid">
-                <article class="product-card" data-product-id="product-1">
-                    <img src="../images/good1.jpg" alt="Единственное ЭКО яблоко" class="product-card__image">
-                    <h2 class="product-card__name">ЭКО яблоко</h2>
-                    <p class="product-card__price">890 руб.</p>
-                    <button class="product-card__button">Добавить в корзину</button>
-                </article>
-                
-                <article class="product-card" data-product-id="product-2">
-                    <img src="../images/good2.jpg" alt="Модный смартфон" class="product-card__image">
-                    <h2 class="product-card__name">Модный смартфон</h2>
-                    <p class="product-card__price">30 руб.</p>
-                    <button class="product-card__button">Добавить в корзину</button>
-                </article>
-                
-                <article class="product-card" data-product-id="product-3">
-                    <img src="../images/good3.jpg" alt="Небольшая студия 20 кв. м" class="product-card__image">
-                    <h2 class="product-card__name">Небольшая студия 20 кв. м</h2>
-                    <p class="product-card__price">130 000 000 руб.</p>
-                    <button class="product-card__button">Добавить в корзину</button>
-                </article>
+        <main class="container my-5">
+            <div class="row mb-4">
+                <div class="col">
+                    <h1 class="display-5 text-center text-primary">Наши товары</h1>
+                    <p class="text-center text-muted">Лучшие товары для ваших морских свинок</p>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="card product-card h-100 shadow-sm" data-product-id="product-1">
+                        <img src="../images/good1.jpg" class="card-img-top" alt="ЭКО яблоко" style="height: 250px; object-fit: cover;">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">ЭКО яблоко</h5>
+                            <p class="card-text flex-grow-1">
+                                Единственное в мире ЭКО яблоко, выращенное специально для морских свинок. 
+                                Натуральный продукт без пестицидов и химикатов.
+                            </p>
+                            <div class="mt-auto">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <span class="h5 text-success mb-0">890 руб.</span>
+                                    <span class="badge bg-warning text-dark">ЭКО</span>
+                                </div>
+                                <button class="btn btn-primary w-100 product-card__button">
+                                    Добавить в корзину
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="card product-card h-100 shadow-sm" data-product-id="product-2">
+                        <img src="../images/good2.jpg" class="card-img-top" alt="Модный смартфон" style="height: 250px; object-fit: cover;">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">Модный смартфон</h5>
+                            <p class="card-text flex-grow-1">
+                                Стильный смартфон для современных морских свинок. 
+                                Отлично подходит для фотосессий и ведения блога.
+                            </p>
+                            <div class="mt-auto">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <span class="h5 text-success mb-0">30 руб.</span>
+                                    <span class="badge bg-info">Хит</span>
+                                </div>
+                                <button class="btn btn-primary w-100 product-card__button">
+                                    Добавить в корзину
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="card product-card h-100 shadow-sm" data-product-id="product-3">
+                        <img src="../images/good3.jpg" class="card-img-top" alt="Небольшая студия" style="height: 250px; object-fit: cover;">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">Небольшая студия 20 кв. м</h5>
+                            <p class="card-text flex-grow-1">
+                                Уютная студия для морской свинки с панорамными окнами. 
+                                Идеальное жилье для настоящих гурманов.
+                            </p>
+                            <div class="mt-auto">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <span class="h5 text-success mb-0">130 000 000 руб.</span>
+                                    <span class="badge bg-danger">Премиум</span>
+                                </div>
+                                <button class="btn btn-primary product-card__button">
+                                    Добавить в корзину
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </main>
 
-        <!-- Подвал -->
-        <footer class="footer">
-            <p class="footer__text">Магазин защищен ассоциацией свинок!</p>
+        <footer class="bg-dark text-white py-4 mt-5">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <p class="mb-0">Магазин защищен ассоциацией свинок!</p>
+                    </div>
+                    <div class="col-md-6 text-md-end">
+                        <a href="contacts.html" class="text-white text-decoration-none">
+                            <i class="bi bi-telephone me-1"></i>Контакты
+                        </a>
+                    </div>
+                </div>
+            </div>
         </footer>
     </div>
 
     <script src="../script/script.js"></script>
-    <script>
-        // Инициализация темы для этой страницы
-        document.addEventListener('DOMContentLoaded', function() {
-            const savedTheme = localStorage.getItem('theme') || 'light';
-            document.documentElement.setAttribute('data-theme', savedTheme);
-            
-            const themeIcon = document.querySelector('.theme-toggle__icon');
-            if (themeIcon) {
-                themeIcon.textContent = savedTheme === 'light' ? '🌙' : '☀️';
-            }
-            
-            const themeToggle = document.getElementById('themeToggle');
-            if (themeToggle) {
-                themeToggle.addEventListener('click', function() {
-                    const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
-                    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-                    
-                    document.documentElement.setAttribute('data-theme', newTheme);
-                    localStorage.setItem('theme', newTheme);
-                    
-                    const icon = this.querySelector('.theme-toggle__icon');
-                    if (icon) {
-                        icon.textContent = newTheme === 'light' ? '🌙' : '☀️';
-                    }
-                });
-            }
-        });
-    </script>
+    <script src="/Second_project/script/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

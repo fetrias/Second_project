@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Товары - Магазин морских свинок</title>
+    <link rel="stylesheet" href="../style/styles.css">
+</head>
+<body>
+    <div class="page">
+        <header class="header">
+            <div class="header__container">
+                <h1 class="header__title">Магазин морских свинок</h1>
+                <div class="header__actions">
+                    <button class="theme-toggle" id="themeToggle" aria-label="Переключить тему">
+                        <span class="theme-toggle__icon">🌙</span>
+                    </button>
+                    <a href="goods.html" class="version-toggle">
+                        Новая версия
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <nav class="nav">
+            <ul class="nav__list">
+                <li class="nav__item">
+                    <a class="nav__link" href="../index.html">Главная</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link" href="news.html">Новости</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link" href="practices.html">Практики</a>
+                </li>
+                <li class="nav__item nav__item--active">
+                    <a class="nav__link" href="goods.html">Товары</a>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link" href="contacts.html">Контакты</a>
+                </li>
+            </ul>
+        </nav>
+
+        <main class="main">
+            <h1 class="products__title">Наши товары</h1>
+            <p class="products__subtitle">Лучшие товары для ваших морских свинок</p>
+            
+            <div class="products__grid">
+                <article class="product-card" data-product-id="product-1">
+                    <div class="product-card__badge product-card__badge--eco">ЭКО</div>
+                    <img src="../images/good1.jpg" alt="Единственное ЭКО яблоко" class="product-card__image">
+                    <h2 class="product-card__name">ЭКО яблоко</h2>
+                    <p class="product-card__description">
+                        Единственное в мире ЭКО яблоко, выращенное специально для морских свинок. 
+                        Натуральный продукт без пестицидов и химикатов.
+                    </p>
+                    <div class="product-card__price-container">
+                        <span class="product-card__price">890 руб.</span>
+                    </div>
+                    <button class="product-card__button">Добавить в корзину</button>
+                </article>
+                
+                <article class="product-card" data-product-id="product-2">
+                    <div class="product-card__badge product-card__badge--hit">Хит</div>
+                    <img src="../images/good2.jpg" alt="Модный смартфон" class="product-card__image">
+                    <h2 class="product-card__name">Модный смартфон</h2>
+                    <p class="product-card__description">
+                        Стильный смартфон для современных морских свинок. 
+                        Отлично подходит для фотосессий и ведения блога.
+                    </p>
+                    <div class="product-card__price-container">
+                        <span class="product-card__price">30 руб.</span>
+                    </div>
+                    <button class="product-card__button">Добавить в корзину</button>
+                </article>
+                
+                <article class="product-card" data-product-id="product-3">
+                    <div class="product-card__badge product-card__badge--premium">Премиум</div>
+                    <img src="../images/good3.jpg" alt="Небольшая студия 20 кв. м" class="product-card__image">
+                    <h2 class="product-card__name">Небольшая студия 20 кв. м</h2>
+                    <p class="product-card__description">
+                        Уютная студия для морской свинки с панорамными окнами. 
+                        Идеальное жилье для настоящих гурманов.
+                    </p>
+                    <div class="product-card__price-container">
+                        <span class="product-card__price">130 000 000 руб.</span>
+                    </div>
+                    <button class="product-card__button">Добавить в корзину</button>
+                </article>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p class="footer__text">Магазин защищен ассоциацией свинок!</p>
+        </footer>
+    </div>
+
+    <script src="../script/script.js"></script>
+</body>
+</html>

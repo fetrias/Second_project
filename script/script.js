@@ -1,6 +1,3 @@
-
-
-// ===== ПЕРЕКЛЮЧАТЕЛЬ ТЕМЫ =====
 class ThemeManager {
     constructor() {
         this.themeToggle = document.getElementById('themeToggle');
@@ -36,7 +33,6 @@ class ThemeManager {
     }
 }
 
-// ===== КОРЗИНА И ВЫБОР ТОВАРОВ =====
 class CartManager {
     constructor() {
         this.cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -118,7 +114,7 @@ class CartManager {
         const button = productCard.querySelector('.product-card__button');
         const originalText = button.textContent;
         
-        button.textContent = '✅ Добавлено!';
+        button.textContent = 'Добавлено!';
         button.classList.add('product-card__button--added');
         
         setTimeout(() => {
@@ -128,12 +124,11 @@ class CartManager {
     }
 }
 
-// ===== СКИДКИ И АКЦИИ =====
 class DiscountManager {
     constructor() {
         this.discounts = {
-            'product-1': 10, // 10% скидка на яблоко
-            'product-2': 50  // 50% скидка на смартфон
+            'product-1': 10,
+            'product-2': 50
         };
         this.init();
     }
@@ -187,7 +182,6 @@ class DiscountManager {
     }
 }
 
-// ===== МОДАЛЬНОЕ ОКНО =====
 class ModalManager {
     constructor() {
         this.modal = document.getElementById('contactModal');
@@ -202,21 +196,18 @@ class ModalManager {
     bindModalEvents() {
         if (!this.modal) return;
         
-        // Закрытие по клику на фон
         this.modal.addEventListener('click', (e) => {
             if (e.target === this.modal) {
                 this.closeModal();
             }
         });
         
-        // Закрытие по Escape
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && this.modal.open) {
                 this.closeModal();
             }
         });
         
-        // Ограничение длины текста
         const messageField = document.getElementById('message');
         if (messageField) {
             messageField.addEventListener('input', (e) => {
@@ -227,7 +218,6 @@ class ModalManager {
             });
         }
         
-        // Маска для телефона
         const phoneField = document.getElementById('phone');
         if (phoneField) {
             phoneField.addEventListener('input', (e) => {
@@ -268,18 +258,56 @@ class ModalManager {
     }
 }
 
-// ===== ИНИЦИАЛИЗАЦИЯ ПРИ ЗАГРУЗКЕ =====
+class BootstrapCartManager {
+    constructor() {
+        this.init();
+    }
+    
+    init() {
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('btn') && 
+                e.target.closest('.product-card') && 
+                e.target.textContent.includes('Добавить в корзину')) {
+                
+                this.handleBootstrapAddToCart(e.target);
+            }
+        });
+    }
+    
+    handleBootstrapAddToCart(button) {
+        const productCard = button.closest('.product-card');
+        const originalText = button.textContent;
+        
+        button.textContent = 'Добавлено!';
+        button.classList.add('btn-success');
+        button.classList.remove('btn-primary');
+        
+        setTimeout(() => {
+            button.textContent = originalText;
+            button.classList.remove('btn-success');
+            button.classList.add('btn-primary');
+        }, 2000);
+        
+        if (window.cartManager) {
+            window.cartManager.addToCart(productCard);
+        }
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
-    // Применяем сохраненную тему
     const savedTheme = localStorage.getItem('theme') || 'light';
     document.documentElement.setAttribute('data-theme', savedTheme);
     
-    // Инициализируем менеджеры только если есть соответствующие элементы
     if (document.getElementById('themeToggle')) {
         new ThemeManager();
     }
     
-    if (document.querySelector('.product-card')) {
+    if (document.querySelector('.product-card .btn')) {
+    new BootstrapCartManager();
+    new BootstrapDiscountManager();
+}
+    
+    if (document.querySelector('.product-card') && !document.querySelector('.product-card .btn')) {
         new CartManager();
         new DiscountManager();
     }
@@ -288,3 +316,63 @@ document.addEventListener('DOMContentLoaded', () => {
         new ModalManager();
     }
 });
+
+class BootstrapDiscountManager {
+    constructor() {
+        this.discounts = {
+            'product-1': 10,
+            'product-2': 50
+        };
+        this.init();
+    }
+    
+    init() {
+        this.applyDiscounts();
+    }
+    
+    applyDiscounts() {
+        Object.keys(this.discounts).forEach(productId => {
+            const productCard = document.querySelector(`[data-product-id="${productId}"]`);
+            if (productCard) {
+                this.addDiscountBadge(productCard, this.discounts[productId]);
+                this.updatePrice(productCard, this.discounts[productId]);
+            }
+        });
+    }
+    
+    addDiscountBadge(productCard, discount) {
+        const existingBadge = productCard.querySelector('.discount-badge');
+        if (existingBadge) return;
+        
+        const badge = document.createElement('span');
+        badge.className = 'position-absolute top-0 end-0 badge bg-danger m-2 discount-badge';
+        badge.textContent = `-${discount}%`;
+        badge.style.fontSize = '0.9rem';
+        productCard.appendChild(badge);
+    }
+    
+    updatePrice(productCard, discount) {
+        const priceElement = productCard.querySelector('.text-success');
+        if (!priceElement) return;
+        
+        const originalPrice = this.parsePrice(priceElement.textContent);
+        const discountedPrice = Math.round(originalPrice * (1 - discount / 100));
+        
+        priceElement.innerHTML = `
+            <span class="text-decoration-line-through text-muted me-2" style="font-size: 0.9rem;">${this.formatPrice(originalPrice)}</span>
+            <span>${this.formatPrice(discountedPrice)}</span>
+        `;
+    }
+    
+    parsePrice(priceText) {
+        return parseInt(priceText.replace(/[^\d]/g, ''));
+    }
+    
+    formatPrice(price) {
+        return new Intl.NumberFormat('ru-RU', {
+            style: 'currency',
+            currency: 'RUB',
+            minimumFractionDigits: 0
+        }).format(price);
+    }
+}

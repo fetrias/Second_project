@@ -10,12 +10,10 @@
 </head>
 <body>
     <div class="page">
-        <!-- Шапка -->
         <header class="header">
             <h1 class="header__title">Магазин морских свинок</h1>
         </header>
 
-        <!-- Навигация -->
         <nav class="nav">
             <ul class="nav__list">
                 <li class="nav__item">
@@ -36,7 +34,6 @@
             </ul>
         </nav>
 
-        <!-- Основной контент -->
         <main class="main">
             <h1 class="contacts__title">Наши контакты</h1>
             
@@ -69,12 +66,10 @@
             </div>
         </main>
 
-        <!-- Подвал -->
         <footer class="footer">
             <p class="footer__text">Магазин защищен ассоциацией свинок!</p>
         </footer>
 
-        <!-- Модальное окно для формы обратной связи -->
         <dialog id="contactModal" class="modal">
             <div class="modal__header">
                 <h2 class="modal__title">Форма обратной связи</h2>
@@ -139,28 +134,23 @@
         </dialog>
 
         <script>
-            // Получаем элементы
             const contactModal = document.getElementById('contactModal');
             const feedbackForm = document.getElementById('feedbackForm');
 
-            // Функция для закрытия модального окна
             function closeModal() {
                 contactModal.close();
                 resetForm();
             }
 
-            // Функция для отправки формы
             function submitForm() {
                 const form = document.getElementById('feedbackForm');
                 const formData = new FormData(form);
                 
-                // Валидация формы
                 if (!form.checkValidity()) {
                     form.reportValidity();
                     return;
                 }
 
-                // Собираем данные формы
                 const data = {
                     name: formData.get('name'),
                     phone: formData.get('phone'),
@@ -170,40 +160,32 @@
                     timestamp: new Date().toISOString()
                 };
 
-                // В реальном приложении здесь был бы AJAX-запрос на сервер
                 console.log('Данные формы обратной связи:', data);
                 
-                // Закрываем модальное окно
                 closeModal();
                 
-                // Показываем сообщение об успехе
                 showSuccessMessage();
             }
 
-            // Функция показа успешного сообщения
             function showSuccessMessage() {
-                alert('✅ Спасибо! Ваше сообщение отправлено. Мы свяжемся с вами в ближайшее время.');
+                alert('Спасибо! Ваше сообщение отправлено. Мы свяжемся с вами в ближайшее время.');
             }
 
-            // Сброс формы при закрытии модального окна
             function resetForm() {
                 feedbackForm.reset();
             }
 
-            // Закрытие модального окна по клику на фон
             contactModal.addEventListener('click', function(event) {
                 if (event.target === this) {
                     closeModal();
                 }
             });
 
-            // Обработка клавиши Escape
             contactModal.addEventListener('cancel', function(event) {
                 event.preventDefault();
                 closeModal();
             });
 
-            // Ограничение длины текста в textarea
             document.getElementById('message').addEventListener('input', function(event) {
                 const maxLength = 500;
                 if (this.value.length > maxLength) {
@@ -211,7 +193,6 @@
                 }
             });
 
-            // Маска для телефона
             document.getElementById('phone').addEventListener('input', function(event) {
                 let value = this.value.replace(/\D/g, '');
                 if (value.startsWith('7') || value.startsWith('8')) {
